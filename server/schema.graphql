@@ -5,7 +5,7 @@ type Query{
 }
 
 type Mutation {
-    createJob(companyId: ID,title: String, description: String): Job
+    createJob(input: CreateJobInput): Job
 }
 
 type Company {
@@ -19,5 +19,11 @@ type Job{
     id: ID! #id type is defiend be graphql and is string in its root  # ! prevent from being null
     title: String
     company: Company
+    description: String
+}
+
+input CreateJobInput {
+    companyId: ID
+    title: String
     description: String
 }
