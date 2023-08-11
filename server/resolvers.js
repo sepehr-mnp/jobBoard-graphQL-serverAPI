@@ -7,9 +7,12 @@ const Query = {
 };
 
 const Mutation = {
-    createJob: (root,{input}) => {
-        const id = db.jobs.create(input);
-        return db.jobs.get(id);
+    createJob: (root,{input}, context) => {
+        ///check user auth
+        console.log("context: ",context);
+        // const id = db.jobs.create(input);
+        // return db.jobs.get(id);
+        return null;
     }
 };
 
@@ -29,5 +32,8 @@ const Job = {
 /// age schema ro okey koni vali to resolver taarif nakoni, mitooni call koni as console khode graphql vali faghat null migiti(//* baresi kon age in schema ro taarif nakoni chi mishe? javab ehtemali error hast)
  
 /// to gereftan element ha, jaye ona ro be har tartibi bezary, hamoonjoori mide
+
+/// to authirazation emla kheyli moheme va ' bayad bezari na " !      /// baraye khode authorization nabayad ' bezari
+
 
 module.exports = { Query, Mutation, Company, Job };

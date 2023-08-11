@@ -23,10 +23,19 @@ const resolvers = require('./resolvers');
 
 let apolloServer = null;
 async function startServer() {
+  let context = null;
+  
+  
     apolloServer = new ApolloServer({
         typeDefs,
         resolvers,
-    });
+        context: ({req}) =>({  ///req vorodi express
+          token: req.headers.authorization,
+      
+          // try to retrieve a user with the token
+         // user: getUser(token)
+        })
+       });
     await apolloServer.start();
     apolloServer.applyMiddleware({app,path:'/graphql'});
 }
